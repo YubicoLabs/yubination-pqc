@@ -26,6 +26,8 @@ TEST_ALG=ML-DSA-87 node e2e-mldsa.mjs http://localhost:8010
 
 Keycloak provider unit tests run during its Docker build. Its software ceremony suite requires Java 21+, Docker and curl. From `examples/keycloak`, run `bash test.sh`. It creates synthetic test accounts, exercises classical/PQ signatures, forgery rejection and fresh-login/SSO policy paths. It does not replace real browser/YubiKey testing.
 
+After building the Java software-authenticator JAR, run `node scripts/check-jar-notices.mjs` from the repository root (requires `unzip`). This checks the pinned dependency license/notice resources in the packaged JAR; it is not a legal-compliance certification.
+
 ## Hardware walkthrough
 
 Use the challenge instructions. For each credential class, register, sign out, sign in freshly, enter Standard and then Secure, and verify the expected denial/acceptance. Test existing SSO separately from fresh authentication. Confirm logout by starting another sign-in. Record browser/OS/device versions; never share tokens or raw credential evidence publicly.

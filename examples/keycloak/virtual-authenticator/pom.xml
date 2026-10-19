@@ -18,6 +18,22 @@
   <build>
     <finalName>virtual-mldsa-authenticator</finalName>
     <plugins>
+      <!-- Keep each dependency's notices under its own path: a fat JAR can otherwise
+           overwrite identically named META-INF/LICENSE and META-INF/NOTICE files. -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId><version>3.8.1</version>
+        <executions><execution>
+          <id>preserve-dependency-notices</id><phase>generate-resources</phase>
+          <goals><goal>unpack-dependencies</goal></goals>
+          <configuration>
+            <includeScope>runtime</includeScope>
+            <includes>META-INF/*LICENSE*,META-INF/*NOTICE*,META-INF/*license*,META-INF/*notice*,LICENSE*,NOTICE*</includes>
+            <outputDirectory>${project.build.outputDirectory}/META-INF/dependency-notices</outputDirectory>
+            <useSubDirectoryPerArtifact>true</useSubDirectoryPerArtifact>
+          </configuration>
+        </execution></executions>
+      </plugin>
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId><version>3.7.1</version>
         <configuration>
