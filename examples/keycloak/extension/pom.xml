@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.pqkc</groupId>
+  <artifactId>keycloak-webauthn-mldsa</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+  <name>Keycloak WebAuthn ML-DSA (FIPS 204) provider</name>
+
+  <properties>
+    <maven.compiler.release>21</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <keycloak.version>26.4.7</keycloak.version>
+    <webauthn4j.version>0.29.3.RELEASE</webauthn4j.version>
+    <bouncycastle.version>1.82</bouncycastle.version>
+    <jackson.version>2.19.2</jackson.version>
+  </properties>
+
+  <dependencies>
+    <!-- everything below is supplied by the Keycloak distribution at runtime -->
+    <dependency><groupId>org.keycloak</groupId><artifactId>keycloak-core</artifactId>
+      <version>${keycloak.version}</version><scope>provided</scope></dependency>
+    <dependency><groupId>org.keycloak</groupId><artifactId>keycloak-server-spi</artifactId>
+      <version>${keycloak.version}</version><scope>provided</scope></dependency>
+    <dependency><groupId>org.keycloak</groupId><artifactId>keycloak-server-spi-private</artifactId>
+      <version>${keycloak.version}</version><scope>provided</scope></dependency>
+    <dependency><groupId>org.keycloak</groupId><artifactId>keycloak-services</artifactId>
+      <version>${keycloak.version}</version><scope>provided</scope></dependency>
+    <dependency><groupId>com.webauthn4j</groupId><artifactId>webauthn4j-core</artifactId>
+      <version>${webauthn4j.version}</version><scope>provided</scope></dependency>
+    <dependency><groupId>org.bouncycastle</groupId><artifactId>bcprov-jdk18on</artifactId>
+      <version>${bouncycastle.version}</version><scope>provided</scope></dependency>
+    <dependency><groupId>com.fasterxml.jackson.core</groupId><artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version><scope>provided</scope></dependency>
+    <dependency><groupId>com.fasterxml.jackson.dataformat</groupId><artifactId>jackson-dataformat-cbor</artifactId>
+      <version>${jackson.version}</version><scope>provided</scope></dependency>
+
+    <dependency><groupId>org.junit.jupiter</groupId><artifactId>junit-jupiter</artifactId>
+      <version>5.11.4</version><scope>test</scope></dependency>
+  </dependencies>
+
+  <build>
+    <finalName>keycloak-webauthn-mldsa</finalName>
+    <plugins>
+      <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version></plugin>
+      <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.5</version></plugin>
+    </plugins>
+  </build>
+</project>

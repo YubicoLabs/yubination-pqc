@@ -1,0 +1,65 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: keycloak
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U keycloak -d keycloak"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  keycloak:
+    build:
+      context: .
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: keycloak
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+      # http is fine on localhost: browsers treat http://localhost as a secure context,
+      # which is what WebAuthn requires. Do not expose this to another host over http.
+      KC_HOSTNAME: http://localhost:8085
+      KC_HOSTNAME_STRICT: "false"
+      KC_HTTP_ENABLED: "true"
+      KC_LOG_LEVEL: "info,org.pqkc:debug"
+    ports:
+      - "127.0.0.1:8085:8080"
+      - "127.0.0.1:9001:9000"
+    healthcheck:
+      # the Keycloak image ships no curl; /dev/tcp needs bash, not sh, so invoke bash directly
+      test: ["CMD", "bash", "-c", "exec 3<>/dev/tcp/127.0.0.1/9000; printf 'GET /health/ready HTTP/1.1\\r\\nHost: localhost\\r\\nConnection: close\\r\\n\\r\\n' >&3; grep -q '\"status\": \"UP\"' <&3"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+
+  app-standard:
+    build:
+      context: ./apps
+      args:
+        APP: standard
+    depends_on: [keycloak]
+    ports:
+      - "127.0.0.1:8091:80"
+
+  app-secure:
+    build:
+      context: ./apps
+      args:
+        APP: secure
+    depends_on: [keycloak]
+    ports:
+      - "127.0.0.1:8092:80"
+
+volumes:
+  pgdata:

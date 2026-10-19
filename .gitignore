@@ -1,0 +1,10 @@
+**/node_modules/
+**/target/
+.env
+*.log
+.DS_Store
+test-results/
+playwright-report/
+*.pem
+*.key
+*.p12

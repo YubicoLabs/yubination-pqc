@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SSO demo</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header>
+    <span id="badge" class="badge"></span>
+    <h1 id="app-name">…</h1>
+    <p id="app-rule" class="rule"></p>
+  </header>
+
+  <section id="anon" hidden>
+    <p class="lead">You are not signed in.</p>
+    <button id="login" class="primary">Sign in with a passkey</button>
+  </section>
+
+  <section id="error" hidden>
+    <h2>Sign-in refused</h2>
+    <p id="error-text"></p>
+    <button id="retry">Try again</button>
+  </section>
+
+  <section id="signed-in" hidden>
+    <p class="lead">Signed in as <strong id="who"></strong></p>
+    <div id="alg-card" class="card">
+      <div class="row">
+        <div class="alg-label">Passkey signature algorithm</div>
+        <div id="alg" class="alg">unknown</div>
+      </div>
+      <div class="row">
+        <div class="alg-label">Token signature algorithm</div>
+        <div id="token-alg" class="alg">unknown</div>
+      </div>
+      <div id="pq" class="pq"></div>
+    </div>
+    <details>
+      <summary>ID token claims</summary>
+      <pre id="claims"></pre>
+    </details>
+    <button id="logout">Sign out</button>
+  </section>
+
+  <footer>
+    <a href="http://localhost:8091/">Standard app</a> ·
+    <a href="http://localhost:8092/">Secure app</a> ·
+    <a href="http://localhost:8085/admin/" target="_blank" rel="noreferrer">Keycloak admin</a>
+  </footer>
+</main>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
