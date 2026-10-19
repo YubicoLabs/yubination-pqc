@@ -3,6 +3,7 @@
   "version": "14.0.0",
   "description": "SimpleWebAuthn v14 example server, configured to request PQC ML-DSA passkeys",
   "private": true,
+  "license": "Apache-2.0 AND MIT",
   "type": "module",
   "scripts": {
     "start": "node index.ts"

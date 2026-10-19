@@ -1,0 +1,15 @@
+YubiNation post-quantum authentication examples and learning journeys
+Copyright 2026 Yubico AB
+
+Original contributions and modifications are licensed under Apache License 2.0.
+Third-party portions retain their applicable licenses and copyright notices.
+
+This project includes portions derived from:
+- SimpleWebAuthn v14.0.0 example, Copyright (c) 2020 Matthew Miller, MIT License.
+  See licenses/SimpleWebAuthn-MIT.txt.
+- Keycloak 26.4.7 WebAuthnRegister.java,
+  Copyright 2002-2019 the original author or authors, Apache License 2.0.
+  See LICENSE and the attribution/modification notice in the derived source.
+
+See THIRD_PARTY_NOTICES.md for component and packaged-artifact information.
+This notice does not change any upstream license or grant trademark rights.

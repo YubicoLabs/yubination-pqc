@@ -6,6 +6,7 @@ import assert from 'node:assert/strict';
 const jar = fileURLToPath(new URL('../examples/keycloak/virtual-authenticator/target/virtual-mldsa-authenticator.jar', import.meta.url));
 const entries = new Set(execFileSync('unzip', ['-Z1',jar],{encoding:'utf8'}).trim().split('\n'));
 const base = 'META-INF/dependency-notices/';
+for (const name of ['LICENSE', 'NOTICE']) assert(entries.has(`META-INF/yubination/${name}`), `Missing project ${name}`);
 for (const artifact of ['jackson-core','jackson-databind','jackson-annotations','jackson-dataformat-cbor']) {
   for (const name of ['LICENSE','NOTICE']) {
     const path = `${base}${artifact}-2.19.2-jar/META-INF/${name}`;

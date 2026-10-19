@@ -2,7 +2,7 @@
 
 The examples build on [SimpleWebAuthn](https://github.com/MasterKale/SimpleWebAuthn), [Keycloak](https://github.com/keycloak/keycloak), [WebAuthn4J](https://github.com/webauthn4j/webauthn4j), Bouncy Castle, Node.js, Express and PostgreSQL. Their dependencies retain their respective licenses and notices. Dependency versions are declared in the example package lockfile, Maven POM files and Dockerfiles.
 
-The Keycloak extension and example-specific adaptations are not represented as upstream releases or endorsed implementations. This notice is attribution, not a new license grant for the example-specific code.
+Original contributions and modifications are licensed under the repository's [Apache License 2.0](LICENSE). Third-party portions retain their upstream licenses. The Keycloak extension and example-specific adaptations are not represented as upstream releases or endorsed implementations.
 
 ## Source attribution
 
@@ -12,4 +12,4 @@ The custom Keycloak registration provider adapts registration logic from Keycloa
 
 ## Built artifacts
 
-Installed npm packages and downloaded container images carry their own licenses; do not strip those notices when redistributing builds. The Java software-authenticator build preserves dependency license/notice resources in artifact-specific directories under `META-INF/dependency-notices` to avoid collisions between identically named files. Bouncy Castle's license is additionally provided as a readable resource there. This is not a repository-wide license grant.
+Installed npm packages and downloaded container images carry their own licenses; do not strip those notices when redistributing builds. The Java software-authenticator build preserves dependency license/notice resources in artifact-specific directories under `META-INF/dependency-notices` to avoid collisions between identically named files. Bouncy Castle's license is additionally provided as a readable resource there. The root LICENSE does not replace these third-party terms.

@@ -54,3 +54,7 @@ Read the walkthroughs or run the [software tests](docs/testing.md). They exercis
 - Keycloak has its own account/session model and custom provider. Its enrollment-session semantics differ from fresh-assertion evidence; see the walkthrough.
 - Neither a PQ credential nor a PQ-signed token establishes end-to-end system PQ protection.
 - [Implementation boundaries](docs/implementation.md), [testing](docs/testing.md), [security and limitations](SECURITY.md), and [third-party attribution](THIRD_PARTY_NOTICES.md).
+
+## License
+
+Original code, modifications and educational documentation in this repository are licensed under [Apache License 2.0](LICENSE), except where otherwise noted. Third-party portions retain their original licenses, including MIT for the upstream SimpleWebAuthn example. See [NOTICE](NOTICE) and [third-party notices](THIRD_PARTY_NOTICES.md).

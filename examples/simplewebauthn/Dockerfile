@@ -12,6 +12,7 @@ RUN npm ci --omit=dev
 
 COPY app/index.ts app/types.d.ts app/tsconfig.json ./
 COPY app/public ./public
+COPY app/licenses ./licenses
 
 # Serve the WebAuthn browser bundle from the container rather than a CDN, so the
 # client and server halves of SimpleWebAuthn can't drift apart.
